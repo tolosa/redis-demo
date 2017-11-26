@@ -10,7 +10,7 @@ $listener = Redis.new
 $client = Redis.new
 
 puts
-puts 'Redis chat client demo'.upcase.bold
+puts 'Redis chat client demo'.upcase.green.bold
 puts
 
 username = ''
@@ -34,7 +34,7 @@ Thread.new do
     on.message do |channel, message|
       data = JSON.parse(message)
       sender = data['username']
-      puts "\r#{sender.bold.red}: #{data['message']}" if sender != username
+      puts "\r#{sender.magenta.bold}: #{data['message']}" if sender != username
       print PROMPT
     end
   end
@@ -42,6 +42,6 @@ end
 
 loop do
   print PROMPT
-  message = gets("\n").chomp
+  message = gets.chomp
   $client.publish CHANNEL_NAME, { username: username, message: message }.to_json
 end
