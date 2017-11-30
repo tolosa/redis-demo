@@ -1,7 +1,7 @@
 require 'rubygems'
-require 'redis'
-require 'json'
-require 'colorize'
+require 'bundler/setup'
+
+Bundler.require(:default)
 
 CHANNEL_NAME = 'redis-chat-demo'
 PROMPT = "\r> "
