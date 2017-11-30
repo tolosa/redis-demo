@@ -24,7 +24,9 @@ elapsed = Benchmark.realtime do
   end
 end
 
-puts "#{TOTAL_VISITS_COUNT} fake visits stored in Redis in #{elapsed.round(2)} seconds"
+puts "#{TOTAL_VISITS_COUNT} fake visits across #{ITEMS_COUNT} unique URLs stored in Redis in #{elapsed.round(2)} seconds"
+puts
+puts 'Resulting ranking:'
 puts
 
 ranks = nil
@@ -34,8 +36,9 @@ elapsed = Benchmark.realtime do
 end
 
 ranks.each_with_index do |rank, index|
-  print "#{index + 1}) "
-  puts "#{rank[0]}: #{rank[1].to_i} visits"
+  print (index + 1).to_s.rjust(3, ' ')
+  print ') '
+  puts "#{rank[0]}: #{rank[1].to_i} visits".light_white
 end
 
 puts
