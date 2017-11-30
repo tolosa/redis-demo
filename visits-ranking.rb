@@ -1,7 +1,4 @@
-require 'rubygems'
-require 'redis'
-require 'colorize'
-require 'benchmark'
+require_relative 'shared'
 
 $redis = Redis.new
 
